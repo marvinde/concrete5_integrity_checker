@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<concrete5-cif version="1.0">
+
+    <singlepages>
+        <page package="concrete5_integrity_checker" name="Integrity Checker" description="" pagetype="" path="/dashboard/system/update/integrity_checker" filename="/dashboard/system/update/integrity_checker.php">
+        </page>
+    </singlepages>
+
+</concrete5-cif>

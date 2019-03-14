@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: concrete5_integrity_checker 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-03-14T19:06:21+01:00\n"
+"PO-Revision-Date: 2019-03-14 19:50+0100\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: packages/concrete5_integrity_checker/config/install.xml:5
+msgid "Integrity Checker"
+msgstr "Vérification de l’intégrité"
+
+#: packages/concrete5_integrity_checker/controller.php:49
+msgid "Concrete5 Integrity Checker"
+msgstr "Vérification de l’intégrité de concrete5"
+
+#: packages/concrete5_integrity_checker/controller.php:59
+msgid "This package allows to check if core files have been modified and list them."
+msgstr "Ce package permet de vérifier et de lister les fichiers du coeur qui ont été modifiés."
+
+#: packages/concrete5_integrity_checker/single_pages/dashboard/system/update/integrity_checker.php:7
+#: packages/concrete5_integrity_checker/single_pages/dashboard/system/update/integrity_checker.php:52
+msgid "Check core integrity"
+msgstr "Vérifier l'intégrité"
+
+#: packages/concrete5_integrity_checker/single_pages/dashboard/system/update/integrity_checker.php:12
+msgid "Check again"
+msgstr "Relancer les tests"
+
+#: packages/concrete5_integrity_checker/single_pages/dashboard/system/update/integrity_checker.php:20
+msgid "Changed files"
+msgstr "Fichiers modifiés"
+
+#: packages/concrete5_integrity_checker/single_pages/dashboard/system/update/integrity_checker.php:44
+msgid "Checking..."
+msgstr "Vérification..."
+
+#: packages/concrete5_integrity_checker/controllers/single_page/dashboard/system/update/integrity_checker.php:160
+#: packages/concrete5_integrity_checker/controllers/single_page/dashboard/system/update/integrity_checker.php:163
+msgid "The archive could not be downloaded."
+msgstr "L'archive n'a pas pu être téléchargée."
+
+#: packages/concrete5_integrity_checker/controllers/single_page/dashboard/system/update/integrity_checker.php:167
+msgid "The directory %s must be writable."
+msgstr "Le dossier %s doit être accessible en écriture."
