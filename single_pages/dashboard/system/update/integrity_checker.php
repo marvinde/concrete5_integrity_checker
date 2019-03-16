@@ -14,7 +14,15 @@
     <?php } ?>
 </div>
 
-<?php \Concrete\Core\View\View::element('system_errors', ['format' => 'block', 'error' => $errors]); ?>
+<div class="ccm-system-errors alert alert-danger" <?php if (!$errors->has()) { ?>style="display: none;"<?php } ?>>
+    <?php
+        if ($errors->has()) {
+            foreach ($errors->getList() as $error) {
+                echo '<div>' . $error->getMessage() . '</div>';
+            }
+        }
+    ?>
+</div>
 
 <?php if (!$errors->has()) { ?>
     <h3 id="diff-title" style="display: none;"><?= t('Changed files'); ?></h3>
@@ -42,6 +50,9 @@
 
             $('#check_core_integrity').on('click', function() {
                 $('#check_core_integrity').html('<?= t('Checking...'); ?> <i class="fa fa-spinner fa-spin"></i>').prop('disabled', 'disabled');
+                $('.ccm-system-errors').fadeOut('fast', function() {
+                    $('.ccm-system-errors').html('');
+                });
                 $('#diff-title').fadeOut();
                 $('#diff').fadeOut(function() {
                     $('#diff').html('');
@@ -50,10 +61,15 @@
                     url: '<?= $c->getCollectionLink(); ?>/check_core_integrity',
                 }).done(function(response) {
                     $('#check_core_integrity').html(<?= json_encode(t('Check core integrity')); ?>).removeAttr('disabled');
-                    if (response.modified_files.length > 0) {
+                    if (response.errors && response.errors.errors.length > 0) {
+                        response.errors.errors.forEach(function(error) {
+                            $('.ccm-system-errors').append('<div>' + error + '</div>');
+                        });
+                        $('.ccm-system-errors').fadeIn();
+                    }
+                    if (response.modified_files && response.modified_files.length > 0) {
                         $('#diff-title').fadeIn();
                         $('#diff').fadeIn(function() {
-                            // TODO: afficher les erreurs si il y en a
                             response.modified_files.forEach((element, index) => {
                                 $('#diff').append(_templateDiff({
                                     index: index,
