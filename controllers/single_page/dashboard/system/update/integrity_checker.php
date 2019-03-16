@@ -16,6 +16,7 @@ class IntegrityChecker extends DashboardPageController
      * @var array
      */
     protected $versions = [
+        '8.5.0' => 'https://www.concrete5.org/download_file/-/view/109116/8497/',
         '8.4.5' => 'https://www.concrete5.org/download_file/-/view/108839/8497/',
         '8.4.4' => 'https://www.concrete5.org/download_file/-/view/108181/8497/',
         '8.4.3' => 'https://www.concrete5.org/download_file/-/view/107738/8497/',
