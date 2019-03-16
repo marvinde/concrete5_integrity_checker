@@ -80,7 +80,6 @@ class IntegrityChecker extends DashboardPageController
         );
         $this->checks();
         $this->requireAsset('javascript', 'underscore');
-        $this->requireAsset('ace');
         $this->set('errors', $this->errors);
         $this->set('version', $this->version);
     }
