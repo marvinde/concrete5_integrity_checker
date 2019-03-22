@@ -102,9 +102,11 @@ class IntegrityChecker extends DashboardPageController
             $modifiedFiles = [];
             $coreFiles = $fileHelper->getDirectoryContents($basePath . '/' . DIRNAME_CORE, [], true);
             foreach ($coreFiles as $file) {
-
-                // TODO: vérifier si il y a une update
-                $coreFile = str_replace($basePath . '/' . DIRNAME_CORE, DIR_BASE . '/' . DIRNAME_CORE, $file);
+                $coreFileBasePath = DIR_BASE . '/' . DIRNAME_CORE;
+                if (!empty(DIRNAME_APP_UPDATED)) {
+                    $coreFileBasePath = DIR_BASE . '/' . DIRNAME_UPDATES . '/' . DIRNAME_APP_UPDATED . '/' . DIRNAME_CORE;
+                }
+                $coreFile = str_replace($basePath . '/' . DIRNAME_CORE, $coreFileBasePath, $file);
                 $fileHash = hash_file('sha256', $file);
                 $coreFileHash = hash_file('sha256', $coreFile);
                 if ($coreFileHash !== $fileHash) {
@@ -142,7 +144,12 @@ class IntegrityChecker extends DashboardPageController
     {
         $file = $this->post('file');
         $basePath = $this->downloadsPath . 'concrete5-' . $this->version;
-        $coreFile = str_replace($basePath . '/' . DIRNAME_CORE, DIR_BASE . '/' . DIRNAME_CORE, $file);
+        $coreFileBasePath = DIR_BASE . '/' . DIRNAME_CORE;
+        if (!empty(DIRNAME_APP_UPDATED)) {
+            $coreFileBasePath = DIR_BASE . '/' . DIRNAME_UPDATES . '/' . DIRNAME_APP_UPDATED . '/' . DIRNAME_CORE;
+        }
+        $coreFile = str_replace($basePath . '/' . DIRNAME_CORE, $coreFileBasePath, $file);
+
         try {
             $diffObj = new DiffChecker($file, $coreFile);
             $diff = null;
