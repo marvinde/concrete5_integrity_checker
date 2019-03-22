@@ -24,6 +24,8 @@
     ?>
 </div>
 
+<div class="ccm-system-messages alert alert-info" <?php if (!$errors->has()) { ?>style="display: none;"<?php } ?>></div>
+
 <?php if (!$errors->has()) { ?>
     <h3 id="diff-title" style="display: none;"><?= t('Changed files'); ?></h3>
     <div class="panel-group" id="diff" role="tablist" aria-multiselectable="true"></div>
@@ -53,6 +55,9 @@
                 $('.ccm-system-errors').fadeOut('fast', function() {
                     $('.ccm-system-errors').html('');
                 });
+                $('.ccm-system-messages').fadeOut('fast', function() {
+                    $('.ccm-system-messages').html('');
+                });
                 $('#diff-title').fadeOut();
                 $('#diff').fadeOut(function() {
                     $('#diff').html('');
@@ -66,6 +71,10 @@
                             $('.ccm-system-errors').append('<div>' + error + '</div>');
                         });
                         $('.ccm-system-errors').fadeIn();
+                    }
+                    if (response.message) {
+                        $('.ccm-system-messages').append('<div>' + response.message + '</div>');
+                        $('.ccm-system-messages').fadeIn();
                     }
                     if (response.modified_files && response.modified_files.length > 0) {
                         $('#diff-title').fadeIn();

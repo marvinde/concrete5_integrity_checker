@@ -121,8 +121,14 @@ class IntegrityChecker extends DashboardPageController
             $this->errors->add($e->getMessage());
         }
 
+        $message = null;
+        if (count($modifiedFiles) === 0) {
+            $message = t('There is no modified file.');
+        }
+
         return new JsonResponse([
             'errors' => $this->errors->jsonSerialize(),
+            'message' => $message,
             'nb_checked_files' => count($coreFiles),
             'nb_modified_files' => count($modifiedFiles),
             'modified_files' => $modifiedFiles,
